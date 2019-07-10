@@ -1,8 +1,9 @@
 {
   "name": "vue-swiper-js",
   "description": "Vue component on top of Swiper.js",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "private": false,
+  "homepage": "https://github.com/victorevan/vue-swiper",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
