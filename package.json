@@ -1,7 +1,7 @@
 {
   "name": "vue-swiper-js",
   "description": "Vue component on top of Swiper.js",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -38,10 +38,10 @@
       "parser": "babel-eslint"
     }
   },
-  "main": "./dist/vue-swiper.common.js",
+  "main": "dist/vue-swiper.common.js",
   "files": [
-    "dist/*",
-    "src/*",
+    "dist",
+    "src",
     "*.json",
     "*.js"
   ],
