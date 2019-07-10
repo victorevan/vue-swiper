@@ -1,5 +1,6 @@
 {
   "name": "vue-swiper-js",
+  "description": "Vue component on top of Swiper.js",
   "version": "0.0.1",
   "private": false,
   "scripts": {
