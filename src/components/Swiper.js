@@ -1,6 +1,6 @@
 import "swiper/dist/css/swiper.min.css";
 import Swiper from "swiper/dist/js/swiper.esm.bundle";
-import kebabCase from "lodash/kebabCase";
+import kebabCase from "lodash.kebabcase";
 import events from "./events";
 
 export default {
