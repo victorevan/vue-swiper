@@ -51,10 +51,6 @@ export default {
 		this.init();
 	},
 
-	updated() {
-		this.swiper.update();
-	},
-
 	beforeDestroy() {
 		if (this.swiper) this.swiper.destroy();
 	},
