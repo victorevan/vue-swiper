@@ -1,5 +1,9 @@
 <template>
-  <li class="swiper-slide">
+  <li
+    class="swiper-slide"
+    v-bind="$attrs"
+    v-on="$listeners"
+  >
     <slot />
   </li>
 </template>

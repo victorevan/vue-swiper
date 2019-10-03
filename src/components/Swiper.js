@@ -1,14 +1,24 @@
-import "swiper/dist/css/swiper.min.css";
-import Swiper from "swiper/dist/js/swiper.esm.bundle";
-import kebabCase from "lodash.kebabcase";
-import events from "./events";
+import 'swiper/dist/css/swiper.min.css';
+import {
+	Swiper,
+	Virtual,
+	Keyboard,
+	Pagination,
+	Navigation,
+	A11y
+} from 'swiper/dist/js/swiper.esm.js';
+import kebabCase from 'lodash/kebabCase';
+import deepMerge from 'lodash/merge';
+import events from './events';
+
+Swiper.use([Virtual, Keyboard, Pagination, Navigation, A11y]);
 
 export default {
-	name: "VueSwiper",
+	name: 'VueSwiper',
 
 	model: {
-		prop: "active",
-		event: "change"
+		prop: 'active',
+		event: 'change'
 	},
 
 	props: {
@@ -19,6 +29,10 @@ export default {
 		options: {
 			type: Object,
 			default: () => ({})
+		},
+		defaultPagination: {
+			type: Boolean,
+			default: false
 		}
 	},
 
@@ -51,7 +65,7 @@ export default {
 		this.init();
 	},
 
-	beforeDestroy() {
+	destroyed() {
 		if (this.swiper) this.swiper.destroy();
 	},
 
@@ -59,14 +73,19 @@ export default {
 		init() {
 			if (this.swiper) this.swiper.destroy();
 
-			const config = Object.assign(
+			const config = deepMerge(
 				{
 					preloadImages: false,
 					keyboard: {
 						enabled: true,
 						onlyInViewport: true
 					},
-					a11y: true
+					a11y: true,
+					pagination: this.defaultPagination
+						? {
+								el: '.swiper-pagination'
+						  }
+						: {}
 				},
 				this.options
 			);
@@ -92,8 +111,8 @@ export default {
 		 * Bind v-model
 		 */
 		bindModel() {
-			this.$on("swiper:slide-change", () => {
-				this.$emit("change", this.currentSlide);
+			this.$on('swiper:slide-change', () => {
+				this.$emit('change', this.currentSlide);
 			});
 		},
 		/**
@@ -107,9 +126,12 @@ export default {
 	},
 
 	render(h) {
+		const { $slots, defaultPagination } = this;
+
 		return (
-			<div class="swiper-container">
-				<ul class="swiper-wrapper">{this.$slots.default}</ul>
+			<div class="swiper-container" attrs={this.$attrs} on={this.$listeners}>
+				<ul class="swiper-wrapper">{$slots.default}</ul>
+				{defaultPagination && <div class="swiper-pagination"></div>}
 			</div>
 		);
 	}
