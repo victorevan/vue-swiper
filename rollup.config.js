@@ -33,7 +33,8 @@ let generatedBuilds = [
     input: INPUT,
     output: {
       file: "dist/vue-swiper.esm.js",
-      format: "esm"
+      format: "esm",
+      exports: "named"
     },
     external: EXTERNAL,
     plugins: PLUGINS
@@ -42,7 +43,8 @@ let generatedBuilds = [
     input: INPUT,
     output: {
       file: "dist/vue-swiper.cjs.js",
-      format: "cjs"
+      format: "cjs",
+      exports: "named"
     },
     external: EXTERNAL,
     plugins: PLUGINS
