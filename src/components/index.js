@@ -1,11 +1,11 @@
 import Swiper from "./Swiper";
-import SwiperSlide from "./SwiperSlide";
+import SwiperSlide from "./SwiperSlide.vue";
 
 export default {
-	install(Vue) {
+  install(Vue) {
     Vue.component(Swiper);
     Vue.component(SwiperSlide);
   }
 };
 
-export { Swiper, SwiperSlide }
+export { Swiper, SwiperSlide };
